@@ -1,0 +1,33 @@
+
+<head>
+	<meta charset="utf-8">
+</head>
+
+<div class="container spacer">
+	 mot clé<input type="text" ng-model="motCle" >
+	<button ng-click="getProduits()">charger</button>
+</div>
+<div class="container ">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>	<th>Désignation</th>	<th>prix</th>	<th>Quantité</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="p in pageProduits.content" >
+				<td> {{p.id}}</td>
+				<td> {{p.designation}}</td>
+				<td> {{p.prix}}</td>
+				<td> {{p.quantite}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="container">
+	<ul class="nav nav-pills" >
+		 <li ng-class="{active:$index==pageCourante}" style="cursor: pointer" ng-repeat="p in pages track by $index" > 
+		 	<a ng-click="goToPage($index)"> {{$index}} </a> 
+		 </li> 
+	</ul>
+</div>

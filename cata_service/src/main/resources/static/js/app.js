@@ -38,7 +38,20 @@ app.controller('HomeController', function() {
 
 app.controller('DeleteController', function($scope,$http) {
 	
+	$scope.idSupprime=null;
+	$scope.messageSuppresion="";
+	$scope.modeSupp=0;
 	
+	$scope.btnSupprime=function(){
+		$http.delete("http://localhost:8080/produits/" +$scope.idSupprime)
+		.then(function(response) {
+			$scope.modeSupp=1;
+			$scope.messageSuppresion="suppression de produit numéro "+$scope.idSupprime;
+		}
+		, function(response) {
+			console.log(response.data);
+		})
+	};
 	
 	
 });
